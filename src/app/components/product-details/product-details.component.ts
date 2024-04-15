@@ -39,7 +39,7 @@ export class ProductDetailsComponent implements OnInit{
       this.catalogService.addToCart(addCart);
       this.router.navigate(['/shoppingCart'])
     } else {
-      this.toastr.warning('Item is already in the shopping cart.' ,'', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000})
+      this.toastr.warning('Item is already in the shopping cart.' ,'Warning', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000})
       // alert('Item is already in the shopping cart.')
     }
     

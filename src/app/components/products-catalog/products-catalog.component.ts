@@ -12,6 +12,7 @@ export class ProductsCatalogComponent implements OnInit{
 
  products : CatalogProducts[] = [];
  filterProducts : CatalogProducts[] = [];
+ p : any;
 
  searchTerm : string = '';
  badgeCount :number = 0 ;

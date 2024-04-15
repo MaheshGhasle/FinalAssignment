@@ -46,7 +46,7 @@ export class CheckoutPageComponent implements OnInit {
     const add = this.customerDetails.value ;
     this.catalogService.orderData.next(check);
     this.catalogService.billingAddress.next(add);
-    this.toastr.success('Payment Successfull.' ,'', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000});
+    this.toastr.success('Payment Successfull.' ,'Success', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000});
     this.router.navigate(['/orderCnf']);
     this.catalogService.addToCartData = [];
     this.catalogService.badgeCountSubject.next(0);
