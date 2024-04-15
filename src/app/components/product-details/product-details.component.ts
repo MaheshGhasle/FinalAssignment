@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../../services/catalog.service';
 import { CatalogProducts } from '../../models/catalog.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductDetailsComponent implements OnInit{
   getProduct : CatalogProducts ;
   id : number ;
-  constructor(private catalogService : CatalogService  , private route : ActivatedRoute , private router : Router){}
+  constructor(private catalogService : CatalogService  , private route : ActivatedRoute , private router : Router , private toastr: ToastrService){}
 
   ngOnInit(): void {
 
@@ -38,7 +39,8 @@ export class ProductDetailsComponent implements OnInit{
       this.catalogService.addToCart(addCart);
       this.router.navigate(['/shoppingCart'])
     } else {
-      alert('Item is already in the shopping cart.')
+      this.toastr.warning('Item is already in the shopping cart.' ,'', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000})
+      // alert('Item is already in the shopping cart.')
     }
     
   }

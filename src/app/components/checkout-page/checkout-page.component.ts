@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CatalogService } from '../../services/catalog.service';
 import { CatalogProducts } from '../../models/catalog.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout-page',
@@ -14,7 +15,7 @@ export class CheckoutPageComponent implements OnInit {
   checkoutAmount :number = 0;
   checkoutItems : CatalogProducts[];
   checkoutLength : number = 0;
-  constructor(private catalogService : CatalogService , private router : Router) {}
+  constructor(private catalogService : CatalogService , private router : Router , private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.customerDetails = new FormGroup({
@@ -45,6 +46,7 @@ export class CheckoutPageComponent implements OnInit {
     const add = this.customerDetails.value ;
     this.catalogService.orderData.next(check);
     this.catalogService.billingAddress.next(add);
+    this.toastr.success('Payment Successfull.' ,'', {positionClass : 'toast-top-center' , closeButton: true , timeOut: 3000});
     this.router.navigate(['/orderCnf']);
     this.catalogService.addToCartData = [];
     this.catalogService.badgeCountSubject.next(0);

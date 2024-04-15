@@ -1,4 +1,5 @@
 <div class="container pb-5">
+    <main>
       <div class="pt-3 text-center">
         <h2>Checkout form</h2>
         <p class="lead">One step to get your product.</p>
@@ -13,17 +14,14 @@
             <span class="badge bg-primary rounded-pill">{{checkoutLength}}</span>
           </h4>
           <ul class="list-group mb-3">
-            <ng-container *ngFor="let item of checkoutItems">
-              <li class="list-group-item d-flex justify-content-between lh-sm" >
-                <div>
-                  <img width="150px" height="150px" src="{{item.image}}"  alt="">
-                  <h6 class="my-2">{{item.title}}</h6>
-                  <!-- <small class="text-muted">B</small> -->
-                </div>
-                <span class="text-muted">Price : ${{item.price}}</span>
-              </li>
-            </ng-container>
-            
+            <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let item of checkoutItems">
+              <div>
+                <img width="150px" height="150px" src="{{item.image}}"  alt="">
+                <h6 class="my-2">{{item.title}}</h6>
+                <!-- <small class="text-muted">B</small> -->
+              </div>
+              <span class="text-muted">Price : ${{item.price}}</span>
+            </li>
             
             <li class="list-group-item d-flex justify-content-between">
               <span>Total (USD)</span>
@@ -40,10 +38,7 @@
                 <mat-form-field>
                   <mat-label>Your Name</mat-label>
                   <input matInput required formControlName="username">
-                  <ng-container *ngIf='!customerDetails.get("username").valid && customerDetails.get("username").touched'>
-                    <mat-hint align="start">Please enter the valid name.</mat-hint>
-                        
-                  </ng-container>
+                  <mat-hint align="start" *ngIf='!customerDetails.get("username").valid && customerDetails.get("username").touched'>Please enter the valid name.</mat-hint>
                 </mat-form-field>
               </div>
 
@@ -52,10 +47,7 @@
                 <mat-form-field>
                   <mat-label>Email</mat-label>
                   <input matInput required formControlName="email">
-                  <ng-container *ngIf='!customerDetails.get("email").valid && customerDetails.get("email").touched'>
-                  <mat-hint align="start" >Please enter the valid email.</mat-hint>
-                      
-                  </ng-container>
+                  <mat-hint align="start" *ngIf='!customerDetails.get("email").valid && customerDetails.get("email").touched'>Please enter the valid email.</mat-hint>
                 </mat-form-field>
                 
               </div>
@@ -64,10 +56,7 @@
                 <mat-form-field>
                   <mat-label>Phone Number</mat-label>
                   <input matInput required formControlName="phone" type="number">
-                  <ng-container *ngIf='!customerDetails.get("phone").valid && customerDetails.get("phone").touched'>
-                  <mat-hint align="start" >Please enter the valid Phone number.</mat-hint>
-                      
-                  </ng-container>
+                  <mat-hint align="start" *ngIf='!customerDetails.get("phone").valid && customerDetails.get("phone").touched'>Please enter the valid Phone number.</mat-hint>
                 </mat-form-field>
         
               </div>
@@ -76,10 +65,7 @@
                 <mat-form-field>
                   <mat-label>Address</mat-label>
                   <input matInput required formControlName="address">
-                  <ng-container *ngIf='!customerDetails.get("address").valid && customerDetails.get("address").touched'>
-                  <mat-hint align="start" >Please enter your address.</mat-hint>
-                     
-                  </ng-container>
+                  <mat-hint align="start" *ngIf='!customerDetails.get("address").valid && customerDetails.get("address").touched'>Please enter your address.</mat-hint>
         
                 </mat-form-field>
                 
@@ -91,30 +77,21 @@
                     <mat-form-field>
                       <mat-label>State</mat-label>
                       <input matInput required formControlName="state">
-                      <ng-container *ngIf='!customerDetails.get("state").valid && customerDetails.get("state").touched'>
-                      <mat-hint align="start" >Please enter your state.</mat-hint>
-                          
-                      </ng-container>
+                      <mat-hint align="start" *ngIf='!customerDetails.get("state").valid && customerDetails.get("state").touched'>Please enter your state.</mat-hint>
                     </mat-form-field>
                   </div>
                   <div class="col-md-4">
                     <mat-form-field>
                       <mat-label>Country</mat-label>
                       <input matInput required formControlName="country">
-                      <ng-container *ngIf='!customerDetails.get("country").valid && customerDetails.get("country").touched'>
-                      <mat-hint align="start" >Please enter your country.</mat-hint>
-                         
-                      </ng-container>
+                      <mat-hint align="start" *ngIf='!customerDetails.get("country").valid && customerDetails.get("country").touched'>Please enter your country.</mat-hint>
                     </mat-form-field>
                   </div>
                   <div class="col-md-4">
                     <mat-form-field>
                       <mat-label>Zip Code</mat-label>
                       <input matInput required formControlName="zipcode" type="number">
-                      <ng-container *ngIf='!customerDetails.get("zipcode").valid && customerDetails.get("zipcode").touched'>
-                        <mat-hint align="start" >Please enter the valid zip code.</mat-hint>
-
-                      </ng-container>
+                      <mat-hint align="start" *ngIf='!customerDetails.get("zipcode").valid && customerDetails.get("zipcode").touched'>Please enter the valid zip code.</mat-hint>
                     </mat-form-field>
                   </div>
                 </div>
@@ -143,10 +120,7 @@
                     <mat-label>Name on Card</mat-label>
                     <input matInput required formControlName="ccName" type="text">
                     <mat-hint class="text-muted">Full name as displayed on card</mat-hint>
-                    <ng-container *ngIf='!customerDetails.get("ccName").valid && customerDetails.get("ccName").touched'>
-                      <mat-hint align="start" >Name on card is required.</mat-hint>
-
-                    </ng-container>
+                    <mat-hint align="start" *ngIf='!customerDetails.get("ccName").valid && customerDetails.get("ccName").touched'>Name on card is required.</mat-hint>
                   </mat-form-field>
                 </div>
     
@@ -154,10 +128,7 @@
                   <mat-form-field>
                     <mat-label>Credit card number</mat-label>
                     <input matInput required formControlName="ccNumber" type="number">
-                    <ng-container *ngIf='!customerDetails.get("ccNumber").valid && customerDetails.get("ccNumber").touched'>
-                    <mat-hint align="start" >Credit card number is required.</mat-hint>
-                      
-                    </ng-container>
+                    <mat-hint align="start" *ngIf='!customerDetails.get("ccNumber").valid && customerDetails.get("ccNumber").touched'>Credit card number is required.</mat-hint>
                   </mat-form-field>
                 </div>
               <div class="row gy-3">
@@ -165,10 +136,7 @@
                   <mat-form-field>
                     <mat-label>Expiration</mat-label>
                     <input matInput required formControlName="ccExpiration" type="date">
-                    <ng-container *ngIf='!customerDetails.get("ccExpiration").valid && customerDetails.get("ccExpiration").touched'>
-                      <mat-hint align="start" >Expiration date required.</mat-hint>
-
-                    </ng-container>
+                    <mat-hint align="start" *ngIf='!customerDetails.get("ccExpiration").valid && customerDetails.get("ccExpiration").touched'>Expiration date required.</mat-hint>
                   </mat-form-field>
                 </div>
     
@@ -176,10 +144,7 @@
                   <mat-form-field>
                     <mat-label>CVV</mat-label>
                     <input matInput required formControlName="ccv" type="number">
-                    <ng-container *ngIf='!customerDetails.get("ccv").valid && customerDetails.get("ccv").touched'>
-                      <mat-hint align="start" >Security code required.</mat-hint>
-
-                    </ng-container>
+                    <mat-hint align="start" *ngIf='!customerDetails.get("ccv").valid && customerDetails.get("ccv").touched'>Security code required.</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -198,5 +163,6 @@
           
         </div>
       </div>
+    </main>
 
   </div>
